@@ -29,7 +29,7 @@
     },
     "commits": [{
         "id": "488b127663a7ebacbc7a2b199c6817f99f278dd0",
-        "message": "FIRST COMMIT\\n",
+        "message": "FIRST COMMIT",
         "timestamp": "2017-04-19T12:53:58+02:00",
         "url": "https://git.linuxmce.org/ochorocho/server-administration/commit/488b127663a7ebacbc7a2b199c6817f99f278dd0",
         "author": {
@@ -41,7 +41,7 @@
         "removed": []
     }, {
         "id": "cb65fd1dbf5daabddd260664ae8584c4e4436649",
-        "message": "SECOND COMMIT\\n",
+        "message": "SECOND COMMIT",
         "timestamp": "2017-04-19T12:53:58+02:00",
         "url": "https://git.linuxmce.org/ochorocho/server-administration/commit/cb65fd1dbf5daabddd260664ae8584c4e4436649",
         "author": {

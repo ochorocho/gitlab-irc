@@ -13,7 +13,7 @@ post '/commit' do
 
    # redis = Redis.new(:host => config['redis']['host'], :port => config['redis']['port'])
    # /var/run/redis/redis.sock
-   redis = Redis.new(:path => "/tmp/redis.sock")
+   redis = Redis.new(:path => "#{config['redis']['socket']}")
    messages = MessageFormatter.messages(request.body.read)
 
    msg_file = File.join(File.dirname(__FILE__), '../tmp/msg.txt')

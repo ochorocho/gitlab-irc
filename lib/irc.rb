@@ -11,8 +11,8 @@ class PollingPlugin
   timer $config['irc']['poll_interval'], :method => :timed
 
   def timed
-    #redis = Redis.new(:host => $config['redis']['host'], :port => $config['redis']['port'])
-    redis = Redis.new(:path => "/tmp/redis.sock")
+    socket = $config['redis']['socket']
+    redis = Redis.new(:path => "#{socket}")
     key = "#{$config['redis']['namespace']}:messages"
     while redis.llen(key) > 0
       Channel($config['irc']['channel']).send(redis.lpop(key))

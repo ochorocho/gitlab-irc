@@ -1,6 +1,7 @@
 require 'multi_json'
 require 'net/http'
 require 'xmlsimple'
+require 'yaml'
 
 class MessageFormatter
   def self.messages(json)
@@ -15,8 +16,9 @@ class MessageFormatter
         info['commits'].each do |ci|
             url = ci['url']
             ci_title = ci['message'].lines.first.chomp
-            short = config['msg']['short_uri'] ? "#{short_url(url)}" : "#{url}"
-            msg = "[#{info['repository']['name'].capitalize}(#{branch})] by #{ci['author']['name']} | #{ci_title} | #{short}"            
+            # short = config['msg']['short_uri'] ? "#{short_url(url)}" : "#{url}"
+            short = short_url("http://www.google.com/huhuhuhuhuhuhuxxxx")
+            msg = "[#{info['repository']['name'].capitalize}(#{branch})] by #{ci['author']['name']} | #{ci_title} | #{short}"
             msgs << msg
         end
     elsif info['object_kind'] == 'tag_push' && config['msg']['tag_push'] == true
@@ -83,13 +85,14 @@ class MessageFormatter
 
   def self.short_url(url)
 
-    url = URI.parse("http://bn.gy//API.asmx/CreateUrl?real_url=#{url}")
+    url = URI.parse("http://tinyurl.com/api-create.php?url=#{url}")
     req = Net::HTTP::Get.new(url.to_s)
     resp = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
     }
-    data = XmlSimple.xml_in resp.body
-    shorty = "#{data["ShortenedUrl"]}"[2..-3]
+    data = resp.body
+    # shorty = "#{data["ShortenedUrl"]}"[2..-3]
+    shorty = "#{data}"
     return shorty
 
   end
