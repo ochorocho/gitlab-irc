@@ -12,7 +12,7 @@ class PollingPlugin
 
   def timed
     #redis = Redis.new(:host => $config['redis']['host'], :port => $config['redis']['port'])
-    redis = Redis.new(:path => "/var/run/redis/redis.sock")
+    redis = Redis.new(:path => "/tmp/redis.sock")
     key = "#{$config['redis']['namespace']}:messages"
     while redis.llen(key) > 0
       Channel($config['irc']['channel']).send(redis.lpop(key))
@@ -35,12 +35,12 @@ bot = Cinch::Bot.new do
     c.verbose = $config['irc']['verbose']
   end
   on :message, /@[Gg]it[Ll]ab [Ii]nfo/ do |m|
-    m.reply "#{m.user.nick}, this is the place where we can interact with GitLab!"    
-  end  
+    m.reply "#{m.user.nick}, this is the place where we can interact with GitLab!"
+  end
   on :message, /@[Gg]it[Ll]ab [Ww]hats [Uu]p/ do |m|
     m.reply "#{m.user.nick}, the sky?"
-  end  
-  
+  end
+
 end
 
 bot.start
