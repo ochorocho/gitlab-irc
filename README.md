@@ -1,8 +1,5 @@
 ## gitlab-irc
 
-[![Build Status](https://travis-ci.org/nTraum/gitlab-irc.png?branch=master)](https://travis-ci.org/nTraum/gitlab-irc)
-[![Dependency Status](https://gemnasium.com/nTraum/gitlab-irc.svg)](https://gemnasium.com/nTraum/gitlab-irc)
-
 Tiny web / IRC application that announces commits for GitLab repositories via IRC.
 Built with Sinatra and cinch. Uses GitLab's web hooks, no voodoo required.
 
@@ -18,9 +15,9 @@ Example message:
 
 ### Installation & Usage
 
-1. Clone the repository: `git clone https://github.com/nTraum/gitlab-irc.git`
+1. Clone the repository: `git clone https://github.com/ochorocho/gitlab-irc.git`
 2. Install required gems: `cd gitlab-irc; gem install bundler; bundle`
-2. Edit `config/config.yml` to your needs (e.g. IRC channel and server)
+2. Copy `config/config.yml.example` to `config/config.yml` and change it to your needs (e.g. IRC channel and server)
 3. Start the app: `foreman start` in a tmux / screen shell
 4. Add a web hook pointing to the app: `http://localhost:4567/commit` (host / port may differ, depending on your configuration)
 
