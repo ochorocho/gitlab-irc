@@ -16,8 +16,7 @@ class MessageFormatter
         info['commits'].each do |ci|
             url = ci['url']
             ci_title = ci['message'].lines.first.chomp
-            # short = config['msg']['short_uri'] ? "#{short_url(url)}" : "#{url}"
-            short = short_url("http://www.google.com/huhuhuhuhuhuhuxxxx")
+            short = config['msg']['short_uri'] ? "#{short_url(url)}" : "#{url}"
             msg = "[#{info['repository']['name'].capitalize}(#{branch})] by #{ci['author']['name']} | #{ci_title} | #{short}"
             msgs << msg
         end
